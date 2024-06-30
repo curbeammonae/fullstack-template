@@ -21,6 +21,10 @@ const PostSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  favorite: {
+    type: Boolean,
+    required: false,
+  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",

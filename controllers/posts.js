@@ -10,7 +10,7 @@ module.exports = {
       //Grabbing just the posts of the logged-in user
       const posts = await Post.find({ user: req.user.id });
       //Sending post data from mongodb and user data to ejs template
-      res.render("profile.ejs", { posts: posts, user: req.user });
+      res.render("userfeed.ejs", { posts: posts, user: req.user });
     } catch (err) {
       console.log(err);
     }
@@ -42,20 +42,34 @@ module.exports = {
         user: req.user.id,
       });
       console.log("Post has been added!");
-      res.redirect("/profile");
+      res.redirect("/userfeed");
     } catch (err) {
       console.log(err);
     }
   },
-  likePost: async (req, res) => {
+  // likePost: async (req, res) => {
+  //   try {
+  //     await Post.findOneAndUpdate(
+  //       { _id: req.params.id },
+  //       {
+  //         $inc: { likes: 1 },
+  //       }
+  //     );
+  //     console.log("Likes +1");
+  //     res.redirect(`/post/${req.params.id}`);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // },
+  favPost: async (req, res) => {
     try {
       await Post.findOneAndUpdate(
         { _id: req.params.id },
         {
-          $inc: { likes: 1 },
+          $set: { favorite: true },
         }
       );
-      console.log("Likes +1");
+      console.log("fav!");
       res.redirect(`/post/${req.params.id}`);
     } catch (err) {
       console.log(err);
