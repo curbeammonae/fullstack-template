@@ -13,7 +13,11 @@ const PostSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
-  caption: {
+  color: {
+    type: String,
+    required: true,
+  },
+  clothingType: {
     type: String,
     required: true,
   },
@@ -24,6 +28,7 @@ const PostSchema = new mongoose.Schema({
   favorite: {
     type: Boolean,
     required: false,
+    default: false,
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,

@@ -18,8 +18,9 @@
           method="POST"
         >
           <button type="submit">FAV</button>
+          
         </form>
-        <h3 class="col-3">Likes: <%= post.likes %></h3>
+        
         <%if(post.user == user.id){ %>
         <form
           action="/post/deletePost/<%= post.id %>?_method=DELETE"
@@ -36,8 +37,8 @@
     </div>
 
     <div class="col-6 mt-5">
-      <a class="btn btn-primary" href="/profile">Return to Profile</a>
-      <a class="btn btn-primary" href="/feed">Return to Feed</a>
+      <a class="btn btn-primary" href="/userfeed">Return to Closet</a>
+      
     </div>
   </div>
 </div>

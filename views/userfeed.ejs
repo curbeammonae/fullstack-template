@@ -13,7 +13,7 @@
       <a class="btn btn-primary" href="/feed">Return to Feed</a>
     </div>   -->
     <div class="mt-5">
-        <h2>Add a post</h2>
+        <h2>Add some clothes</h2>
         <form action="/post/createPost" enctype="multipart/form-data" method="POST">
           <div class="mb-3">
               <label for="title" class="form-label">Title</label>
@@ -24,10 +24,38 @@
             <textarea class="form-control" id="caption" name="caption"></textarea>
           </div>
           <div class="mb-3">
+            <span>color</span>
+            <select name="color" required>
+              <option value="  "></option>
+              <option value="red">red</option>
+              <option value="blue">blue</option>
+              <option value="green">green</option>
+              <option value="yellow">yellow</option>
+              <option value="orange">orange</option>
+              <option value="gray">gray</option>
+              <option value="brown">brown</option>
+              <option value="pink">pink</option>
+              <option value="purple">purple</option>
+              <option value="White">white</option>
+              <option value="black">black</option>
+              
+            </select>
+          <div class="mb-3">
+            <span>clothing type</span>
+            <select name="clothingType" required>
+              <option value="  "></option>
+              <option value="shirt">shirt</option>
+              <option value="pants">pants</option>
+              
+            </select>
+            
+          </div>
+          <div class="mb-3">
             <label for="imgUpload" class="form-label">Image</label>
             <input type="file" class="form-control" id="imageUpload" name="file">
           </div>
           <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
         </form>
+        <a class="btn btn-primary" href="/favs">Go to Favorites</a>
       </div>
   </div>  

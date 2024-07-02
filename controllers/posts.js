@@ -2,6 +2,21 @@ const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
 
 module.exports = {
+
+
+  getFav: async (req, res) => { 
+    console.log(req.user)
+    try {
+      //Since we have a session each request (req) contains the logged-in users info: req.user
+      //console.log(req.user) to see everything
+      //Grabbing just the posts of the logged-in user
+      const posts = await Post.find({ user: req.user.id });
+      //Sending post data from mongodb and user data to ejs template
+      res.render("favs.ejs", { posts: posts, user: req.user });
+    } catch (err) {
+      console.log(err);
+    }
+  },
   getProfile: async (req, res) => { 
     console.log(req.user)
     try {
@@ -38,6 +53,8 @@ module.exports = {
         image: result.secure_url,
         cloudinaryId: result.public_id,
         caption: req.body.caption,
+        color: req.body.color,
+        clothingType: req.body.clothingType,
         likes: 0,
         user: req.user.id,
       });
